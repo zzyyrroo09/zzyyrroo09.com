@@ -3,143 +3,64 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Developer Portfolio | BSIT</title>
-  <link rel="stylesheet" href="style.css" />
-  <!-- Google Font -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <title>Your Name | Portfolio</title>
+  <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
-
-  <!-- Navigation -->
-  <nav class="navbar">
-    <div class="logo">DevPortfolio<span>.</span></div>
-    <ul class="nav-links">
-      <li><a href="#about">About</a></li>
-      <li><a href="#skills">Skills</a></li>
-      <li><a href="#projects">Projects</a></li>
-      <li><a href="#contact">Contact</a></li>
-    </ul>
-  </nav>
-
-  <!-- Hero Section -->
-  <header class="hero">
-    <div class="hero-content">
-      <p class="tagline">BSIT Student & Aspiring Software Developer</p>
-      <h1>Building functional mobile apps, games, & systems.</h1>
-      <p class="bio">
-        Passionate about turning practical real-world problems into clean, well-architected digital solutions. Experienced in Android development, Unity 2D, and relational database design.
-      </p>
-      <div class="hero-buttons">
-        <a href="#projects" class="btn primary-btn">View My Work</a>
-        <a href="#contact" class="btn secondary-btn">Get In Touch</a>
-      </div>
-    </div>
+  <!-- Header / Navigation -->
+  <header>
+    <nav class="container">
+      <div class="logo">YourName</div>
+      <ul class="nav-links">
+        <li><a href="#about">About</a></li>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </nav>
   </header>
 
-  <!-- Skills Section -->
-  <section id="skills" class="section">
-    <h2 class="section-title">Technical Skills</h2>
-    <div class="skills-grid">
-      <div class="skill-card">
-        <h3>Mobile & App Dev</h3>
-        <p>Android Studio, Java/Kotlin, UI/UX Layouts</p>
-      </div>
-      <div class="skill-card">
-        <h3>Game Development</h3>
-        <p>Unity 2D, C# Scripting, Pixel Art Design</p>
-      </div>
-      <div class="skill-card">
-        <h3>Architecture & DB</h3>
-        <p>MySQL, EERD Modeling, Data Flow Diagrams (DFD)</p>
-      </div>
-      <div class="skill-card">
-        <h3>Tools & Workflows</h3>
-        <p>Git, GitHub, Figma, Draw.io, Agile/Scrum</p>
-      </div>
-    </div>
+  <!-- Hero Section -->
+  <section class="hero container">
+    <h1>Hi, I'm <span class="highlight">Your Name</span>.</h1>
+    <p>A passionate developer/creator building practical digital experiences.</p>
+    <a href="#projects" class="btn">View My Work</a>
+  </section>
+
+  <!-- About Section -->
+  <section id="about" class="container">
+    <h2>About Me</h2>
+    <p>
+      Brief introduction about your background, skills (HTML, CSS, JavaScript, Python, etc.), 
+      and what you are currently learning or working on.
+    </p>
   </section>
 
   <!-- Projects Section -->
-  <section id="projects" class="section">
-    <h2 class="section-title">Featured Projects</h2>
-    <div class="projects-grid">
-
-      <!-- Project 1 -->
+  <section id="projects" class="container">
+    <h2>Projects</h2>
+    <div class="project-grid">
       <div class="project-card">
-        <div class="project-header">
-          <span class="badge">Mobile Development</span>
-          <h3>School Records Management System</h3>
-        </div>
-        <p>
-          Android-based system featuring a student ticketing dashboard, account registration workflows, and automated request tracking.
-        </p>
-        <ul class="tech-tags">
-          <li>Android Studio</li>
-          <li>Java</li>
-          <li>SQLite</li>
-        </ul>
-        <div class="project-links">
-          <a href="#" target="_blank">View Code &rarr;</a>
-        </div>
+        <h3>Project One</h3>
+        <p>A short description of what this project does and the tools you used.</p>
+        <a href="https://github.com" target="_blank" class="card-link">Source Code &rarr;</a>
       </div>
-
-      <!-- Project 2 -->
       <div class="project-card">
-        <div class="project-header">
-          <span class="badge">Game Development</span>
-          <h3>Jeepney Rush (2D Indie Game)</h3>
-        </div>
-        <p>
-          Retro 2D pixel-art obstacle runner featuring math-based fare calculation challenges and landmark navigation mechanics.
-        </p>
-        <ul class="tech-tags">
-          <li>Unity 2D</li>
-          <li>C#</li>
-          <li>Pixel Art</li>
-        </ul>
-        <div class="project-links">
-          <a href="#" target="_blank">View Code &rarr;</a>
-        </div>
+        <h3>Project Two</h3>
+        <p>A short description of what this project does and the tools you used.</p>
+        <a href="https://github.com" target="_blank" class="card-link">Source Code &rarr;</a>
       </div>
-
-      <!-- Project 3 -->
-      <div class="project-card">
-        <div class="project-header">
-          <span class="badge">System Architecture</span>
-          <h3>LearnHub Management Portal</h3>
-        </div>
-        <p>
-          Tutorial center management platform planned using Agile methodology, with robust EERD schemas, session booking, and SMTP email services.
-        </p>
-        <ul class="tech-tags">
-          <li>System Design</li>
-          <li>EERD</li>
-          <li>SMTP Service</li>
-        </ul>
-        <div class="project-links">
-          <a href="#" target="_blank">View Docs &rarr;</a>
-        </div>
-      </div>
-
     </div>
   </section>
 
   <!-- Contact Section -->
-  <section id="contact" class="section contact-section">
-    <h2 class="section-title">Let's Connect</h2>
-    <p>I'm currently seeking junior developer internships and entry-level opportunities.</p>
-    <div class="contact-links">
-      <a href="mailto:your.email@example.com" class="contact-card">Email Me</a>
-      <a href="https://github.com" target="_blank" class="contact-card">GitHub Profile</a>
-      <a href="https://linkedin.com" target="_blank" class="contact-card">LinkedIn</a>
-    </div>
+  <section id="contact" class="container">
+    <h2>Get in Touch</h2>
+    <p>Feel free to reach out for collaborations or opportunities.</p>
+    <a href="mailto:your.email@example.com" class="btn">Email Me</a>
   </section>
 
   <footer>
-    <p>&copy; 2026 Built with clean HTML & CSS.</p>
+    <p>&copy; 2026 Your Name. All rights reserved.</p>
   </footer>
-
 </body>
 </html>
