@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
@@ -11,50 +11,37 @@
 
   <style>
     :root {
-      --paper: #f6f7f9;
-      --surface: #ffffff;
-      --ink: #161b2e;
-      --muted: #5b6478;
-      --line: #dde1e8;
-      --accent: #1f4fd8;
-      --accent-soft: #e8eefd;
+      --paper: #0f1226;
+      --surface: #171b3a;
+      --ink: #eceffd;
+      --muted: #a5abc9;
+      --line: #2b3158;
+      --accent: #8ea8ff;
+      --accent-soft: rgba(142, 168, 255, 0.14);
+      --on-accent: #0f1226;
       --radius: 10px;
     }
-
     * { margin: 0; padding: 0; box-sizing: border-box; }
-
     html { scroll-behavior: smooth; scroll-padding-top: 5rem; }
     @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
 
     body {
       font-family: "Source Sans 3", system-ui, -apple-system, "Segoe UI", sans-serif;
-      font-size: 1.0625rem;
-      line-height: 1.65;
-      color: var(--ink);
-      background: var(--paper);
+      font-size: 1.0625rem; line-height: 1.65; color: var(--ink);
+      background-color: var(--paper);
+      background-image: radial-gradient(900px 480px at 85% -5%, rgba(110, 130, 255, 0.22), transparent 70%);
+      background-repeat: no-repeat;
     }
-
-    h1, h2, h3, .brand {
-      font-family: "Sora", "Source Sans 3", system-ui, sans-serif;
-      letter-spacing: -0.01em;
-    }
-
+    h1, h2, h3, .brand { font-family: "Sora", "Source Sans 3", system-ui, sans-serif; letter-spacing: -0.01em; }
     a { color: var(--accent); }
-    a:focus-visible, .btn:focus-visible {
-      outline: 3px solid var(--accent);
-      outline-offset: 3px;
-      border-radius: 4px;
-    }
-
+    a:focus-visible, .btn:focus-visible { outline: 3px solid var(--accent); outline-offset: 3px; border-radius: 4px; }
     ul { list-style: none; }
-
     .wrap { max-width: 1040px; margin: 0 auto; padding: 0 1.5rem; }
 
     /* Header */
     .site-header {
       position: sticky; top: 0; z-index: 10;
-      background: rgba(246, 247, 249, 0.92);
-      backdrop-filter: blur(8px);
+      background: rgba(15, 18, 38, 0.88); backdrop-filter: blur(8px);
       border-bottom: 1px solid var(--line);
     }
     .nav { display: flex; justify-content: space-between; align-items: center; height: 4rem; }
@@ -64,44 +51,22 @@
     .nav-links a:hover { color: var(--accent); }
 
     /* Hero */
-    .hero {
-      display: grid;
-      grid-template-columns: 1.4fr 1fr;
-      gap: 3.5rem;
-      align-items: center;
-      padding-top: 5rem;
-      padding-bottom: 4.5rem;
-    }
+    .hero { display: grid; grid-template-columns: 1.4fr 1fr; gap: 3.5rem; align-items: center; padding-top: 5rem; padding-bottom: 4.5rem; }
     .hero h1 { font-size: clamp(2.4rem, 5.5vw, 3.6rem); line-height: 1.08; font-weight: 700; }
     .role { margin-top: 0.9rem; font-family: "Sora", sans-serif; font-weight: 500; font-size: 1.15rem; color: var(--accent); }
     .lead { margin-top: 1.25rem; max-width: 34rem; color: var(--muted); font-size: 1.15rem; }
-
     .actions { display: flex; flex-wrap: wrap; gap: 0.75rem; margin-top: 2rem; }
-    .btn {
-      display: inline-block; padding: 0.7rem 1.4rem;
-      border-radius: 8px; font-weight: 600; font-size: 0.98rem;
-      text-decoration: none; border: 1.5px solid var(--accent);
-    }
-    .btn-primary { background: var(--accent); color: #fff; }
-    .btn-primary:hover { background: #173eb0; border-color: #173eb0; }
+    .btn { display: inline-block; padding: 0.7rem 1.4rem; border-radius: 8px; font-weight: 600; font-size: 0.98rem; text-decoration: none; border: 1.5px solid var(--accent); }
+    .btn-primary { background: var(--accent); color: var(--on-accent); }
+    .btn-primary:hover { background: #b0c2ff; border-color: #b0c2ff; }
     .btn-ghost { background: transparent; color: var(--accent); }
     .btn-ghost:hover { background: var(--accent-soft); }
 
     /* Profile card */
-    .profile-card {
-      background: var(--surface);
-      border: 1px solid var(--line);
-      border-radius: 14px;
-      padding: 2rem;
-      box-shadow: 0 12px 32px -16px rgba(22, 27, 46, 0.25);
-    }
+    .profile-card { background: var(--surface); border: 1px solid var(--line); border-radius: 14px; padding: 2rem; box-shadow: 0 20px 40px -20px rgba(0, 0, 0, 0.6); }
     .avatar {
-      width: 112px; height: 112px; border-radius: 50%;
-      object-fit: cover;
-      display: grid; place-items: center;
-      background: var(--accent); color: #fff;
-      font-family: "Sora", sans-serif; font-weight: 600; font-size: 2.1rem;
-      margin-bottom: 1.5rem;
+      width: 112px; height: 112px; border-radius: 50%; object-fit: cover;
+      display: block; margin-bottom: 1.5rem; border: 3px solid var(--accent);
     }
     .profile-card dt { font-size: 0.85rem; color: var(--muted); margin-top: 0.9rem; }
     .profile-card dt:first-child { margin-top: 0; }
@@ -110,30 +75,18 @@
     /* Sections */
     .section { padding-top: 3.5rem; padding-bottom: 3.5rem; border-top: 1px solid var(--line); }
     .section h2 { font-size: 1.7rem; font-weight: 600; margin-bottom: 1.5rem; }
-    .note { color: var(--muted); margin: -0.75rem 0 1.5rem; font-size: 0.97rem; }
-
     .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2.5rem; }
-    .about-grid p { max-width: 34rem; }
+    .about-grid p { max-width: 34rem; color: #d3d7ee; }
 
     /* Skills */
     .skill-groups { display: grid; grid-template-columns: repeat(auto-fit, minmax(210px, 1fr)); gap: 2rem 1.75rem; }
     .skill-group h3 { font-size: 0.98rem; font-weight: 600; margin-bottom: 0.75rem; }
     .chips { display: flex; flex-wrap: wrap; gap: 0.5rem; }
-    .chips li {
-      background: var(--surface); border: 1px solid var(--line);
-      border-radius: 999px; padding: 0.25rem 0.85rem; font-size: 0.93rem;
-    }
+    .chips li { background: var(--surface); border: 1px solid var(--line); border-radius: 999px; padding: 0.25rem 0.85rem; font-size: 0.93rem; }
 
     /* Projects */
     .project-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(290px, 1fr)); gap: 1.5rem; }
-    .project-card {
-      background: var(--surface);
-      border: 1px solid var(--line);
-      border-left: 4px solid var(--accent);
-      border-radius: var(--radius);
-      padding: 1.6rem;
-      display: flex; flex-direction: column;
-    }
+    .project-card { background: var(--surface); border: 1px solid var(--line); border-left: 4px solid var(--accent); border-radius: var(--radius); padding: 1.6rem; display: flex; flex-direction: column; }
     .project-card h3 { font-size: 1.15rem; font-weight: 600; margin-bottom: 0.5rem; }
     .project-card p { color: var(--muted); flex: 1; }
     .tags { display: flex; flex-wrap: wrap; gap: 0.4rem; margin: 1.1rem 0; }
@@ -144,20 +97,17 @@
     .timeline { border-left: 2px solid var(--line); margin-left: 0.4rem; }
     .timeline li { display: grid; grid-template-columns: 5rem 1fr; gap: 1rem; padding: 0 0 1.75rem 1.5rem; position: relative; }
     .timeline li:last-child { padding-bottom: 0; }
-    .timeline li::before {
-      content: ""; position: absolute; left: -0.45rem; top: 0.5rem;
-      width: 0.8rem; height: 0.8rem; border-radius: 50%;
-      background: var(--accent); border: 2px solid var(--paper);
-    }
+    .timeline li::before { content: ""; position: absolute; left: -0.45rem; top: 0.5rem; width: 0.8rem; height: 0.8rem; border-radius: 50%; background: var(--accent); border: 2px solid var(--paper); }
     .when { font-weight: 600; color: var(--muted); }
-    .timeline strong { display: block; }
-    .timeline div span { color: var(--muted); font-size: 0.97rem; }
+    .cert-row { display: flex; justify-content: space-between; align-items: baseline; gap: 1rem; flex-wrap: wrap; }
+    .pdf-link { font-size: 0.8rem; font-weight: 600; padding: 0.2rem 0.65rem; border: 1px solid var(--accent); border-radius: 6px; text-decoration: none; white-space: nowrap; }
+    .pdf-link:hover { background: var(--accent-soft); }
+    .timeline li > div > span { color: var(--muted); font-size: 0.97rem; }
 
     /* Contact and footer */
     .contact p { max-width: 34rem; color: var(--muted); }
     .site-footer { border-top: 1px solid var(--line); padding: 1.75rem 0; color: var(--muted); font-size: 0.92rem; }
 
-    /* Mobile */
     @media (max-width: 800px) {
       .hero { grid-template-columns: 1fr; gap: 2.5rem; padding-top: 3rem; }
       .about-grid { grid-template-columns: 1fr; gap: 1rem; }
@@ -182,7 +132,6 @@
   </header>
 
   <main id="top">
-    <!-- Hero -->
     <section class="wrap hero">
       <div class="hero-text">
         <h1>Zyro C. Alfaro</h1>
@@ -190,107 +139,126 @@
         <p class="lead">I'm a BSIT student building responsive websites and apps, and I'm looking for an internship where I can ship real work with a team.</p>
         <div class="actions">
           <a href="#projects" class="btn btn-primary">View projects</a>
-          <a href="resume.pdf" class="btn btn-ghost" download>Download resume</a>
+          <a href="Zyro_Alfaro_Resume.pdf" class="btn btn-ghost" download>Download resume</a>
         </div>
       </div>
       <aside class="profile-card">
-        <div class="avatar" aria-hidden="true">ZA</div>
+        <img src="zyrrr.jpg" alt="Zyro Alfaro" class="avatar" />
         <dl>
-          <dt>Degree</dt>
-          <dd>BS Information Technology</dd>
-          <dt>Major</dt>
-          <dd>Web and Mobile Application Development</dd>
-          <dt>School</dt>
-          <dd>Bulacan State University, Main Campus</dd>
-          <dt>Status</dt>
-          <dd>Open for internship</dd>
+          <dt>Degree</dt><dd>BS Information Technology</dd>
+          <dt>Major</dt><dd>Web and Mobile Application Development</dd>
+          <dt>School</dt><dd>Bulacan State University, Main Campus</dd>
+          <dt>Status</dt><dd>Open for internship</dd>
         </dl>
       </aside>
     </section>
 
-    <!-- About -->
     <section id="about" class="wrap section">
       <h2>About me</h2>
       <div class="about-grid">
-        <p>I started the BSIT program at Bulacan State University in 2022, and I'm focusing on web and mobile development. I like turning an idea into something people can open, tap, and use.</p>
-        <p>Outside class, I'm interested in content creation and online platforms, which keeps me thinking about how real people use what I build.</p>
+        <p>I started my BSIT journey at Bulacan State University in 2022, specializing in Web and Mobile Application Development. My focus is on turning real-world problems into clean, accessible, and intuitive digital interfaces that people love to use on any screen.</p>
+        <p>I'm currently sharpening my frontend and backend workflow, exploring modern frameworks, and refining how I write maintainable code. As an aspiring software intern, I'm eager to bring my curiosity, strong foundation, and collaborative mindset to a team building high-impact products.</p>
       </div>
     </section>
 
-    <!-- Skills -->
     <section id="skills" class="wrap section">
       <h2>Skills</h2>
-      <p class="note">Keep only what you can actually use. Add or remove items freely.</p>
       <div class="skill-groups">
         <div class="skill-group">
           <h3>Front end</h3>
-          <ul class="chips"><li>HTML</li><li>CSS</li><li>JavaScript</li><li>Responsive design</li></ul>
-        </div>
-        <div class="skill-group">
-          <h3>Mobile</h3>
-          <ul class="chips"><li>Add your framework</li></ul>
+          <ul class="chips"><li>HTML</li><li>CSS</li><li>JavaScript</li><li>Python</li><li>ReactJS</li><li>Responsive design</li></ul>
         </div>
         <div class="skill-group">
           <h3>Back end and data</h3>
-          <ul class="chips"><li>Add your language</li><li>MySQL</li></ul>
+          <ul class="chips"><li>MySQL</li></ul>
         </div>
         <div class="skill-group">
           <h3>Tools</h3>
-          <ul class="chips"><li>Git and GitHub</li><li>VS Code</li><li>Figma</li></ul>
+          <ul class="chips"><li>Gemini</li><li>Claude</li><li>VS Code</li><li>Figma</li></ul>
         </div>
       </div>
     </section>
 
-    <!-- Projects -->
     <section id="projects" class="wrap section">
       <h2>Projects</h2>
       <div class="project-grid">
         <article class="project-card">
-          <h3>Project name</h3>
-          <p>One sentence on what it does and who it's for. Then one sentence on your part in building it.</p>
-          <ul class="tags"><li>HTML</li><li>CSS</li><li>JavaScript</li></ul>
-          <div class="links"><a href="https://github.com/">Source code</a><a href="#">Live demo</a></div>
+          <h3>Jeepney Rush</h3>
+          <p>A mobile game developed using React Native where players navigate a jeepney through traffic.</p>
+          <ul class="tags"><li>C#</li><li>Unity</li><li>Pixel Studio</li><li>Gemini</li></ul>
+          <div class="links">
+            <a href="https://drive.google.com/drive/folders/1CQV1WJoT6sOyiWsZtTs4bXt398SHbxUT?classId=1a212b5b-f9ff-4a32-97b8-561e65c91f02&assignmentId=fbb0adf4-3e9b-430d-b305-4b8eeb67630c&submissionId=ac3d43f4-3950-770c-5090-c852be71e2d6">Source code</a>
+            <a href="https://drive.google.com/drive/folders/1CQV1WJoT6sOyiWsZtTs4bXt398SHbxUT?classId=1a212b5b-f9ff-4a32-97b8-561e65c91f02&assignmentId=fbb0adf4-3e9b-430d-b305-4b8eeb67630c&submissionId=ac3d43f4-3950-770c-5090-c852be71e2d6">Live demo</a>
+          </div>
         </article>
         <article class="project-card">
           <h3>Project name</h3>
           <p>One sentence on what it does and who it's for. Then one sentence on your part in building it.</p>
           <ul class="tags"><li>Tool</li><li>Tool</li></ul>
-          <div class="links"><a href="https://github.com/">Source code</a></div>
+          <div class="links"><a href="https://github.com/zzyyrroo09">Source code</a></div>
         </article>
         <article class="project-card">
           <h3>Project name</h3>
           <p>Capstone, thesis, or class project work belongs here too. Say what problem it solves.</p>
           <ul class="tags"><li>Tool</li><li>Tool</li></ul>
-          <div class="links"><a href="https://github.com/">Source code</a></div>
+          <div class="links"><a href="https://github.com/zzyyrroo09">Source code</a></div>
         </article>
       </div>
     </section>
 
-    <!-- Credentials -->
     <section id="credentials" class="wrap section">
-      <h2>Certifications, awards, and leadership</h2>
+      <h2>Certifications and awards</h2>
       <ul class="timeline">
         <li>
-          <span class="when">Year</span>
-          <div><strong>Certificate or course name</strong><span>Issuer, such as freeCodeCamp, Coursera, or a school seminar</span></div>
+          <span class="when">2024</span>
+          <div>
+            <div class="cert-row"><strong>Getting Started with Cisco Packet Tracer</strong><a class="pdf-link" href="cisco_1.pdf" target="_blank" rel="noopener noreferrer">View PDF &nearr;</a></div>
+            <span>Cisco Networking Academy program</span>
+          </div>
         </li>
         <li>
-          <span class="when">Year</span>
-          <div><strong>Award or recognition</strong><span>Awarding body and what it was for</span></div>
+          <span class="when">2024</span>
+          <div>
+            <div class="cert-row"><strong>Exploring Networking with Cisco Packet Tracer</strong><a class="pdf-link" href="Exploring_Networking_with_Cisco_Packet_Tracer_certificate_zyroalfaro092004-gmail-com_c7f2b226-e012-42ae-af02-3e588d4387aa.pdf" target="_blank" rel="noopener noreferrer">View PDF &nearr;</a></div>
+            <span>Cisco Networking Academy program</span>
+          </div>
         </li>
         <li>
-          <span class="when">Year</span>
-          <div><strong>Organization role</strong><span>Organization name and your responsibilities</span></div>
+          <span class="when">2024</span>
+          <div>
+            <div class="cert-row"><strong>Exploring Internet of Things with Cisco Packet Tracer</strong><a class="pdf-link" href="Exploring_IoT_with_Cisco_Packet_Tracer_certificate_zyroalfaro092004-gmail-com_35b0c79d-2002-43c9-8d11-95e4ffb12d65.pdf" target="_blank" rel="noopener noreferrer">View PDF &nearr;</a></div>
+            <span>Cisco Networking Academy program</span>
+          </div>
+        </li>
+        <li>
+          <span class="when">2025</span>
+          <div>
+            <div class="cert-row"><strong>AGENTBLAZER CHAMPION WORKSHOP</strong><a class="pdf-link" href="AlfaroZyroC_3E-G2.pdf" target="_blank" rel="noopener noreferrer">View PDF &nearr;</a></div>
+            <span>Cisco Networking Academy program</span>
+          </div>
+        </li>
+        <li>
+          <span class="when">2026</span>
+          <div>
+            <div class="cert-row"><strong>ISO/IEC 20000 IT SERVICE MANAGEMENT ASSOCIATE</strong><a class="pdf-link" href="SkillFront-SFE040fb078483b5-51502439568066.pdf" target="_blank" rel="noopener noreferrer">View PDF &nearr;</a></div>
+            <span>Cisco Networking Academy program</span>
+          </div>
+        </li>
+        <li>
+          <span class="when">2026</span>
+          <div>
+            <div class="cert-row"><strong>Platform Administrator</strong><a class="pdf-link" href="Cert8160304_PlatformAdministrator_20260925.pdf" target="_blank" rel="noopener noreferrer">View PDF &nearr;</a></div>
+            <span>Cisco Networking Academy program</span>
+          </div>
         </li>
       </ul>
     </section>
 
-    <!-- Contact -->
     <section id="contact" class="wrap section contact">
       <h2>Contact</h2>
       <p>I'm available for an internship placement. Send me a message and I'll reply as soon as I can.</p>
       <div class="actions">
-        <a href="mailto:your.email@example.com" class="btn btn-primary">Email me</a>
+        <a href="https://mail.google.com/mail/?view=cm&fs=1&to=zyroalfaro092004@gmail.com" target="_blank" rel="noopener noreferrer" class="btn btn-primary">Email me</a>
         <a href="https://github.com/zzyyrroo09" class="btn btn-ghost">GitHub</a>
         <a href="https://www.linkedin.com/" class="btn btn-ghost">LinkedIn</a>
       </div>
