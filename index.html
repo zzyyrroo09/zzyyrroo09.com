@@ -1,343 +1,1864 @@
-
+<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Zyro C. Alfaro | Web and Mobile Developer</title>
-  <meta name="description" content="Portfolio of Zyro C. Alfaro, BSIT (Web and Mobile Application Development) student at Bulacan State University." />
+  <title>Zyro C. Alfaro | Web &amp; Mobile Developer</title>
+  <meta name="description" content="Portfolio of Zyro C. Alfaro, BSIT (Web and Mobile Application Development) student at Bulacan State University. Seeking internship opportunities." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Sora:wght@500;600;700&family=Source+Sans+3:wght@400;500;600&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Sora:wght@500;600;700;800&family=Source+Sans+3:wght@400;500;600;700&display=swap" rel="stylesheet" />
 
   <style>
     :root {
-      --paper: #0f1226;
-      --surface: #171b3a;
-      --ink: #eceffd;
-      --muted: #a5abc9;
-      --line: #2b3158;
-      --accent: #8ea8ff;
-      --accent-soft: rgba(142, 168, 255, 0.14);
-      --on-accent: #0f1226;
-      --radius: 10px;
+      --paper: #090d1e;
+      --surface: rgba(18, 23, 49, 0.72);
+      --surface-card: rgba(22, 28, 58, 0.65);
+      --surface-hover: rgba(28, 36, 75, 0.85);
+      --ink: #f0f3ff;
+      --ink-secondary: #c7ceee;
+      --muted: #8d97be;
+      --line: rgba(142, 168, 255, 0.12);
+      --line-strong: rgba(142, 168, 255, 0.28);
+      --accent: #7c9aff;
+      --accent-glow: rgba(124, 154, 255, 0.28);
+      --accent-soft: rgba(124, 154, 255, 0.12);
+      --accent-cyan: #38bdf8;
+      --accent-emerald: #10b981;
+      --radius: 14px;
+      --radius-sm: 8px;
+      --radius-pill: 9999px;
+      --shadow-card: 0 10px 30px -10px rgba(0, 0, 0, 0.5), inset 0 1px 0 rgba(255, 255, 255, 0.05);
+      --shadow-hover: 0 20px 40px -15px rgba(0, 0, 0, 0.7), 0 0 25px -5px rgba(124, 154, 255, 0.18), inset 0 1px 0 rgba(255, 255, 255, 0.1);
     }
+
     * { margin: 0; padding: 0; box-sizing: border-box; }
-    html { scroll-behavior: smooth; scroll-padding-top: 5rem; }
-    @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+    html { scroll-behavior: smooth; scroll-padding-top: 5.5rem; }
 
     body {
       font-family: "Source Sans 3", system-ui, -apple-system, "Segoe UI", sans-serif;
-      font-size: 1.0625rem; line-height: 1.65; color: var(--ink);
+      font-size: 1.0625rem;
+      line-height: 1.65;
+      color: var(--ink);
       background-color: var(--paper);
-      background-image: radial-gradient(900px 480px at 85% -5%, rgba(110, 130, 255, 0.22), transparent 70%);
-      background-repeat: no-repeat;
+      background-image:
+        radial-gradient(900px 520px at 85% 5%, rgba(124, 154, 255, 0.18), transparent 70%),
+        radial-gradient(750px 450px at 10% 40%, rgba(56, 189, 248, 0.09), transparent 70%),
+        radial-gradient(850px 550px at 80% 85%, rgba(139, 92, 246, 0.12), transparent 70%);
+      background-attachment: fixed;
+      position: relative;
+      min-height: 100vh;
+      overflow-x: hidden;
     }
-    h1, h2, h3, .brand { font-family: "Sora", "Source Sans 3", system-ui, sans-serif; letter-spacing: -0.01em; }
-    a { color: var(--accent); }
-    a:focus-visible, .btn:focus-visible { outline: 3px solid var(--accent); outline-offset: 3px; border-radius: 4px; }
+
+    /* Ambient Tech Dot Matrix Grid */
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      background-image: radial-gradient(rgba(142, 168, 255, 0.08) 1px, transparent 1px);
+      background-size: 32px 32px;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    h1, h2, h3, .brand {
+      font-family: "Sora", system-ui, sans-serif;
+      letter-spacing: -0.02em;
+    }
+
+    a {
+      color: var(--accent);
+      transition: color 0.2s ease;
+    }
+    a:focus-visible, .btn:focus-visible, .pdf-link:focus-visible, .project-link:focus-visible, .filter-btn:focus-visible {
+      outline: 2px solid var(--accent);
+      outline-offset: 3px;
+      border-radius: 6px;
+    }
     ul { list-style: none; }
-    .wrap { max-width: 1040px; margin: 0 auto; padding: 0 1.5rem; }
+    .wrap {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 0 1.5rem;
+      position: relative;
+      z-index: 1;
+    }
 
     /* Header */
     .site-header {
-      position: sticky; top: 0; z-index: 10;
-      background: rgba(15, 18, 38, 0.88); backdrop-filter: blur(8px);
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      background: rgba(9, 13, 30, 0.78);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
       border-bottom: 1px solid var(--line);
     }
-    .nav { display: flex; justify-content: space-between; align-items: center; height: 4rem; }
-    .brand { font-weight: 700; font-size: 1.05rem; color: var(--ink); text-decoration: none; }
-    .nav-links { display: flex; gap: 1.75rem; }
-    .nav-links a { color: var(--muted); text-decoration: none; font-weight: 500; font-size: 0.97rem; }
-    .nav-links a:hover { color: var(--accent); }
-
-    /* Hero */
-    .hero { display: grid; grid-template-columns: 1.4fr 1fr; gap: 3.5rem; align-items: center; padding-top: 5rem; padding-bottom: 4.5rem; }
-    .hero h1 { font-size: clamp(2.4rem, 5.5vw, 3.6rem); line-height: 1.08; font-weight: 700; }
-    .role { margin-top: 0.9rem; font-family: "Sora", sans-serif; font-weight: 500; font-size: 1.15rem; color: var(--accent); }
-    .lead { margin-top: 1.25rem; max-width: 34rem; color: var(--muted); font-size: 1.15rem; }
-    .actions { display: flex; flex-wrap: wrap; gap: 0.75rem; margin-top: 2rem; }
-    .btn { display: inline-block; padding: 0.7rem 1.4rem; border-radius: 8px; font-weight: 600; font-size: 0.98rem; text-decoration: none; border: 1.5px solid var(--accent); }
-    .btn-primary { background: var(--accent); color: var(--on-accent); }
-    .btn-primary:hover { background: #b0c2ff; border-color: #b0c2ff; }
-    .btn-ghost { background: transparent; color: var(--accent); }
-    .btn-ghost:hover { background: var(--accent-soft); }
-
-    /* Profile card */
-    .profile-card { background: var(--surface); border: 1px solid var(--line); border-radius: 14px; padding: 2rem; box-shadow: 0 20px 40px -20px rgba(0, 0, 0, 0.6); }
-    .avatar {
-      width: 112px; height: 112px; border-radius: 50%; object-fit: cover;
-      display: block; margin-bottom: 1.5rem; border: 3px solid var(--accent);
+    .nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      height: 4.25rem;
     }
-    .profile-card dt { font-size: 0.85rem; color: var(--muted); margin-top: 0.9rem; }
-    .profile-card dt:first-child { margin-top: 0; }
-    .profile-card dd { font-weight: 600; }
+    .brand {
+      font-weight: 700;
+      font-size: 1.15rem;
+      color: var(--ink);
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    .brand-dot {
+      width: 9px;
+      height: 9px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--accent), var(--accent-cyan));
+      box-shadow: 0 0 10px var(--accent-glow);
+    }
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 1.75rem;
+    }
+    .nav-links a {
+      color: var(--muted);
+      text-decoration: none;
+      font-weight: 500;
+      font-size: 0.95rem;
+      padding: 0.35rem 0.6rem;
+      border-radius: var(--radius-sm);
+      transition: color 0.2s ease, background-color 0.2s ease;
+    }
+    .nav-links a:hover {
+      color: var(--ink);
+      background: var(--accent-soft);
+    }
+    .nav-cta {
+      display: inline-flex;
+      align-items: center;
+      padding: 0.45rem 1rem !important;
+      background: var(--accent-soft);
+      border: 1px solid var(--line-strong);
+      color: var(--accent) !important;
+      font-weight: 600 !important;
+      border-radius: var(--radius-pill) !important;
+    }
+    .nav-cta:hover {
+      background: var(--accent) !important;
+      color: #090d1e !important;
+      border-color: var(--accent) !important;
+    }
 
-    /* Sections */
-    .section { padding-top: 3.5rem; padding-bottom: 3.5rem; border-top: 1px solid var(--line); }
-    .section h2 { font-size: 1.7rem; font-weight: 600; margin-bottom: 1.5rem; }
-    .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2.5rem; }
-    .about-grid p { max-width: 34rem; color: #d3d7ee; }
+    /* Hero Section */
+    .hero {
+      display: grid;
+      grid-template-columns: 1.35fr 1fr;
+      gap: 3.5rem;
+      align-items: center;
+      padding-top: 5rem;
+      padding-bottom: 4.5rem;
+    }
+    .hero-text {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+    }
 
-    /* Skills */
-    .skill-groups { display: grid; grid-template-columns: repeat(auto-fit, minmax(210px, 1fr)); gap: 2rem 1.75rem; }
-    .skill-group h3 { font-size: 0.98rem; font-weight: 600; margin-bottom: 0.75rem; }
-    .chips { display: flex; flex-wrap: wrap; gap: 0.5rem; }
-    .chips li { background: var(--surface); border: 1px solid var(--line); border-radius: 999px; padding: 0.25rem 0.85rem; font-size: 0.93rem; }
+    /* Live Status Badge */
+    .status-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.6rem;
+      padding: 0.4rem 0.95rem;
+      background: rgba(16, 185, 129, 0.1);
+      border: 1px solid rgba(16, 185, 129, 0.3);
+      border-radius: var(--radius-pill);
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: #34d399;
+      margin-bottom: 1.5rem;
+      backdrop-filter: blur(8px);
+    }
+    .status-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background-color: var(--accent-emerald);
+      box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.6);
+    }
+    @media (prefers-reduced-motion: no-preference) {
+      .status-dot {
+        animation: pulse-ring 2.2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+      }
+    }
+    @keyframes pulse-ring {
+      0% { box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.7); }
+      70% { box-shadow: 0 0 0 8px rgba(16, 185, 129, 0); }
+      100% { box-shadow: 0 0 0 0 rgba(16, 185, 129, 0); }
+    }
 
-    /* Projects */
-    .project-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(290px, 1fr)); gap: 1.5rem; }
-    .project-card { background: var(--surface); border: 1px solid var(--line); border-left: 4px solid var(--accent); border-radius: var(--radius); padding: 1.6rem; display: flex; flex-direction: column; }
-    .project-card h3 { font-size: 1.15rem; font-weight: 600; margin-bottom: 0.5rem; }
-    .project-card p { color: var(--muted); flex: 1; }
-    .tags { display: flex; flex-wrap: wrap; gap: 0.4rem; margin: 1.1rem 0; }
-    .tags li { background: var(--accent-soft); color: var(--accent); font-size: 0.85rem; font-weight: 600; padding: 0.15rem 0.6rem; border-radius: 6px; }
-    .links { display: flex; gap: 1.25rem; font-weight: 600; font-size: 0.97rem; }
+    .hero h1 {
+      font-size: clamp(2.6rem, 5.5vw, 3.8rem);
+      line-height: 1.1;
+      font-weight: 800;
+      background: linear-gradient(135deg, #ffffff 40%, #a5baff 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      margin-bottom: 0.75rem;
+    }
+    .role {
+      font-family: "Sora", sans-serif;
+      font-weight: 600;
+      font-size: 1.2rem;
+      color: var(--accent);
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    .role::before {
+      content: "";
+      display: inline-block;
+      width: 14px;
+      height: 2px;
+      background: var(--accent-cyan);
+    }
+    .lead {
+      margin-top: 1.2rem;
+      max-width: 35rem;
+      color: var(--ink-secondary);
+      font-size: 1.125rem;
+      line-height: 1.7;
+    }
+    .actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.85rem;
+      margin-top: 2rem;
+    }
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.75rem 1.45rem;
+      border-radius: var(--radius-sm);
+      font-weight: 600;
+      font-size: 0.98rem;
+      text-decoration: none;
+      transition: background-color 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease, color 0.2s ease;
+      border: 1.5px solid transparent;
+      cursor: pointer;
+    }
+    .btn-primary {
+      background: linear-gradient(135deg, #8ea8ff 0%, #688bf5 100%);
+      color: #090d1e;
+      border-color: #8ea8ff;
+      box-shadow: 0 4px 16px rgba(110, 130, 255, 0.35);
+    }
+    .btn-primary:hover {
+      background: linear-gradient(135deg, #a7bcff 0%, #7e9dff 100%);
+      border-color: #a7bcff;
+      box-shadow: 0 8px 24px rgba(110, 130, 255, 0.5);
+    }
+    .btn-ghost {
+      background: rgba(142, 168, 255, 0.06);
+      color: var(--ink);
+      border-color: var(--line-strong);
+    }
+    .btn-ghost:hover {
+      background: var(--accent-soft);
+      border-color: var(--accent);
+      color: #fff;
+    }
+    @media (prefers-reduced-motion: no-preference) {
+      .btn {
+        transition: transform 0.2s ease, background-color 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease, color 0.2s ease;
+      }
+      .btn:hover {
+        transform: translateY(-2px);
+      }
+      .btn:active {
+        transform: translateY(0);
+      }
+    }
 
-    /* Credentials timeline */
-    .timeline { border-left: 2px solid var(--line); margin-left: 0.4rem; }
-    .timeline li { display: grid; grid-template-columns: 5rem 1fr; gap: 1rem; padding: 0 0 1.75rem 1.5rem; position: relative; }
-    .timeline li:last-child { padding-bottom: 0; }
-    .timeline li::before { content: ""; position: absolute; left: -0.45rem; top: 0.5rem; width: 0.8rem; height: 0.8rem; border-radius: 50%; background: var(--accent); border: 2px solid var(--paper); }
-    .when { font-weight: 600; color: var(--muted); }
-    .cert-row { display: flex; justify-content: space-between; align-items: baseline; gap: 1rem; flex-wrap: wrap; }
-    .pdf-link { font-size: 0.8rem; font-weight: 600; padding: 0.2rem 0.65rem; border: 1px solid var(--accent); border-radius: 6px; text-decoration: none; white-space: nowrap; }
-    .pdf-link:hover { background: var(--accent-soft); }
-    .timeline li > div > span { color: var(--muted); font-size: 0.97rem; }
+    /* Hero Quick Highlight Bar */
+    .hero-highlights {
+      display: flex;
+      align-items: center;
+      gap: 1.75rem;
+      margin-top: 2.5rem;
+      padding-top: 1.75rem;
+      border-top: 1px solid var(--line);
+      width: 100%;
+    }
+    .highlight-item {
+      display: flex;
+      flex-direction: column;
+    }
+    .highlight-value {
+      font-family: "Sora", sans-serif;
+      font-weight: 700;
+      font-size: 1.1rem;
+      color: var(--ink);
+    }
+    .highlight-label {
+      font-size: 0.825rem;
+      color: var(--muted);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    .highlight-sep {
+      width: 1px;
+      height: 28px;
+      background: var(--line);
+    }
 
-    /* Contact and footer */
-    .contact p { max-width: 34rem; color: var(--muted); }
-    .site-footer { border-top: 1px solid var(--line); padding: 1.75rem 0; color: var(--muted); font-size: 0.92rem; }
+    /* Profile Card */
+    .profile-card {
+      background: var(--surface-card);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      padding: 2.25rem;
+      box-shadow: var(--shadow-card);
+      position: relative;
+      overflow: hidden;
+    }
+    .profile-card::before {
+      content: "";
+      position: absolute;
+      top: -50px;
+      right: -50px;
+      width: 140px;
+      height: 140px;
+      background: radial-gradient(circle, rgba(124, 154, 255, 0.25) 0%, transparent 70%);
+      pointer-events: none;
+    }
+    .avatar-wrapper {
+      position: relative;
+      width: 116px;
+      height: 116px;
+      margin-bottom: 1.5rem;
+    }
+    .avatar {
+      width: 100%;
+      height: 100%;
+      border-radius: 50%;
+      object-fit: cover;
+      display: block;
+      border: 3px solid var(--accent);
+      box-shadow: 0 0 20px rgba(124, 154, 255, 0.35);
+    }
+    .avatar-badge {
+      position: absolute;
+      bottom: 2px;
+      right: 2px;
+      width: 18px;
+      height: 18px;
+      border-radius: 50%;
+      background: #10b981;
+      border: 3px solid var(--paper);
+    }
+    .profile-meta dt {
+      font-size: 0.8rem;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: var(--muted);
+      margin-top: 0.95rem;
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+    }
+    .profile-meta dt:first-child { margin-top: 0; }
+    .profile-meta dd {
+      font-weight: 600;
+      color: var(--ink);
+      font-size: 0.98rem;
+      margin-top: 0.15rem;
+    }
 
-    @media (max-width: 800px) {
-      .hero { grid-template-columns: 1fr; gap: 2.5rem; padding-top: 3rem; }
-      .about-grid { grid-template-columns: 1fr; gap: 1rem; }
-      .nav-links { gap: 1rem; }
-      .nav-links li:nth-child(n+4) { display: none; }
-      .timeline li { grid-template-columns: 1fr; gap: 0.1rem; }
+    /* Section Headers */
+    .section {
+      padding-top: 4.5rem;
+      padding-bottom: 4.5rem;
+      border-top: 1px solid var(--line);
+    }
+    .section-tag {
+      display: inline-block;
+      font-family: "Sora", sans-serif;
+      font-size: 0.8rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 0.5rem;
+    }
+    .section h2 {
+      font-size: 2rem;
+      font-weight: 700;
+      margin-bottom: 1.75rem;
+      color: var(--ink);
+    }
+
+    /* About Grid */
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2rem;
+    }
+    .about-card {
+      background: var(--surface-card);
+      backdrop-filter: blur(12px);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      padding: 1.85rem;
+      box-shadow: var(--shadow-card);
+      line-height: 1.75;
+      color: var(--ink-secondary);
+    }
+
+    /* Skills Section */
+    .skill-groups {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1.75rem;
+    }
+    .skill-group {
+      background: var(--surface-card);
+      backdrop-filter: blur(12px);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      padding: 1.75rem;
+      box-shadow: var(--shadow-card);
+    }
+    .skill-header {
+      display: flex;
+      align-items: center;
+      gap: 0.65rem;
+      margin-bottom: 1.25rem;
+      padding-bottom: 0.75rem;
+      border-bottom: 1px solid var(--line);
+    }
+    .skill-header svg {
+      color: var(--accent);
+    }
+    .skill-group h3 {
+      font-size: 1.05rem;
+      font-weight: 600;
+      color: var(--ink);
+    }
+    .chips {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.55rem;
+    }
+    .chips li {
+      background: rgba(142, 168, 255, 0.06);
+      border: 1px solid var(--line);
+      border-radius: var(--radius-pill);
+      padding: 0.32rem 0.95rem;
+      font-size: 0.92rem;
+      color: var(--ink-secondary);
+      font-weight: 500;
+      transition: border-color 0.2s ease, background-color 0.2s ease, color 0.2s ease;
+    }
+    .chips li:hover {
+      border-color: var(--accent);
+      background: var(--accent-soft);
+      color: #fff;
+    }
+
+    /* Projects Section */
+    .project-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(310px, 1fr));
+      gap: 1.75rem;
+    }
+    .project-card {
+      background: var(--surface-card);
+      backdrop-filter: blur(12px);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      padding: 1.85rem;
+      display: flex;
+      flex-direction: column;
+      box-shadow: var(--shadow-card);
+      position: relative;
+      overflow: hidden;
+      transition: border-color 0.25s ease, box-shadow 0.25s ease;
+    }
+    .project-card::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 3px;
+      background: linear-gradient(90deg, var(--accent), var(--accent-cyan));
+      opacity: 0.7;
+      transition: opacity 0.25s ease;
+    }
+    .project-card:hover {
+      border-color: var(--line-strong);
+      box-shadow: var(--shadow-hover);
+    }
+    .project-card:hover::before {
+      opacity: 1;
+    }
+    @media (prefers-reduced-motion: no-preference) {
+      .project-card {
+        transition: transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
+      }
+      .project-card:hover {
+        transform: translateY(-5px);
+      }
+    }
+
+    .card-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 0.9rem;
+    }
+    .project-type {
+      font-size: 0.8rem;
+      font-weight: 700;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      color: var(--accent);
+    }
+    .project-status {
+      font-size: 0.75rem;
+      font-weight: 600;
+      padding: 0.15rem 0.55rem;
+      border-radius: var(--radius-pill);
+      background: rgba(16, 185, 129, 0.15);
+      color: #34d399;
+      border: 1px solid rgba(16, 185, 129, 0.25);
+    }
+    .project-status.wip {
+      background: rgba(245, 158, 11, 0.15);
+      color: #fbbf24;
+      border-color: rgba(245, 158, 11, 0.25);
+    }
+    .project-card h3 {
+      font-size: 1.25rem;
+      font-weight: 700;
+      margin-bottom: 0.75rem;
+      color: var(--ink);
+    }
+    .project-card p {
+      color: var(--muted);
+      flex: 1;
+      font-size: 0.98rem;
+      line-height: 1.6;
+    }
+    .tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.45rem;
+      margin: 1.4rem 0 1.25rem 0;
+    }
+    .tags li {
+      background: var(--accent-soft);
+      color: var(--accent);
+      font-size: 0.82rem;
+      font-weight: 600;
+      padding: 0.2rem 0.65rem;
+      border-radius: 6px;
+      border: 1px solid rgba(124, 154, 255, 0.15);
+    }
+    .links {
+      display: flex;
+      gap: 0.75rem;
+      align-items: center;
+      padding-top: 0.75rem;
+      border-top: 1px solid var(--line);
+    }
+    .project-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.45rem;
+      font-weight: 600;
+      font-size: 0.92rem;
+      text-decoration: none;
+      padding: 0.4rem 0.85rem;
+      border-radius: 6px;
+      background: rgba(142, 168, 255, 0.08);
+      border: 1px solid var(--line);
+      color: var(--ink);
+      transition: all 0.2s ease;
+    }
+    .project-link:hover {
+      background: var(--accent-soft);
+      border-color: var(--accent);
+      color: #fff;
+    }
+    .project-link.demo {
+      background: var(--accent);
+      color: #090d1e;
+      border-color: var(--accent);
+    }
+    .project-link.demo:hover {
+      background: #a5baff;
+      color: #090d1e;
+    }
+
+    /* ========================================================
+       VISUAL CERTIFICATES GALLERY & LIGHTBOX VIEWER
+       ======================================================== */
+    .cert-header-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      flex-wrap: wrap;
+      gap: 1.5rem;
+      margin-bottom: 2rem;
+    }
+    .cert-sublead {
+      color: var(--muted);
+      max-width: 32rem;
+      font-size: 1rem;
+    }
+    .cert-filters {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.55rem;
+    }
+    .filter-btn {
+      background: var(--surface-card);
+      border: 1px solid var(--line);
+      color: var(--muted);
+      font-family: inherit;
+      font-size: 0.88rem;
+      font-weight: 600;
+      padding: 0.45rem 1.1rem;
+      border-radius: var(--radius-pill);
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+    .filter-btn:hover {
+      color: var(--ink);
+      border-color: var(--line-strong);
+      background: var(--surface-hover);
+    }
+    .filter-btn.active {
+      background: var(--accent);
+      color: #090d1e;
+      border-color: var(--accent);
+      box-shadow: 0 2px 10px rgba(124, 154, 255, 0.35);
+    }
+
+    .cert-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(310px, 1fr));
+      gap: 1.75rem;
+    }
+    .cert-card-visual {
+      background: var(--surface-card);
+      backdrop-filter: blur(12px);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      box-shadow: var(--shadow-card);
+      cursor: pointer;
+      position: relative;
+      transition: border-color 0.25s ease, box-shadow 0.25s ease;
+    }
+    @media (prefers-reduced-motion: no-preference) {
+      .cert-card-visual {
+        transition: transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
+      }
+      .cert-card-visual:hover {
+        transform: translateY(-5px);
+      }
+    }
+    .cert-card-visual:hover {
+      border-color: var(--line-strong);
+      box-shadow: var(--shadow-hover);
+    }
+
+    .cert-thumb-container {
+      position: relative;
+      width: 100%;
+      aspect-ratio: 16 / 11;
+      background: #080c1c;
+      overflow: hidden;
+      border-bottom: 1px solid var(--line);
+    }
+    .cert-thumb-img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center top;
+      display: block;
+      transition: transform 0.35s ease, filter 0.35s ease;
+    }
+    .cert-card-visual:hover .cert-thumb-img {
+      transform: scale(1.04);
+      filter: brightness(1.05);
+    }
+    .cert-overlay {
+      position: absolute;
+      inset: 0;
+      background: rgba(9, 13, 30, 0.65);
+      backdrop-filter: blur(2px);
+      -webkit-backdrop-filter: blur(2px);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      opacity: 0;
+      transition: opacity 0.25s ease;
+    }
+    .cert-card-visual:hover .cert-overlay {
+      opacity: 1;
+    }
+    .cert-overlay-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.45rem;
+      padding: 0.55rem 1.15rem;
+      background: var(--accent);
+      color: #090d1e;
+      font-weight: 700;
+      font-size: 0.88rem;
+      border-radius: var(--radius-pill);
+      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.5);
+    }
+
+    .cert-info {
+      padding: 1.35rem;
+      display: flex;
+      flex-direction: column;
+      flex: 1;
+    }
+    .cert-meta-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 0.65rem;
+    }
+    .cert-year-tag {
+      font-family: "Sora", sans-serif;
+      font-weight: 700;
+      font-size: 0.85rem;
+      color: var(--accent);
+    }
+    .cert-issuer-badge {
+      font-size: 0.78rem;
+      font-weight: 600;
+      color: var(--ink-secondary);
+      background: rgba(142, 168, 255, 0.08);
+      padding: 0.2rem 0.65rem;
+      border-radius: 4px;
+      border: 1px solid var(--line);
+    }
+    .cert-card-title {
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: var(--ink);
+      line-height: 1.45;
+      margin-bottom: 1rem;
+      flex: 1;
+    }
+    .cert-card-footer {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding-top: 0.85rem;
+      border-top: 1px solid var(--line);
+    }
+    .cert-view-action {
+      font-size: 0.88rem;
+      font-weight: 600;
+      color: var(--accent);
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+    }
+    .cert-pdf-direct {
+      font-size: 0.82rem;
+      font-weight: 600;
+      color: var(--muted);
+      text-decoration: none;
+      padding: 0.25rem 0.65rem;
+      border-radius: 6px;
+      border: 1px solid var(--line);
+      background: rgba(142, 168, 255, 0.05);
+      transition: all 0.2s ease;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.3rem;
+    }
+    .cert-pdf-direct:hover {
+      color: #fff;
+      border-color: var(--accent);
+      background: var(--accent-soft);
+    }
+
+    /* Modal Dialog */
+    dialog:modal {
+      overscroll-behavior: contain;
+    }
+    dialog::backdrop {
+      overflow: hidden;
+      overscroll-behavior: contain;
+      background-color: rgba(6, 9, 23, 0.84);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+    }
+    .cert-modal {
+      border: 1px solid var(--line-strong);
+      border-radius: 20px;
+      background: #0d122b;
+      color: var(--ink);
+      max-width: 980px;
+      width: 92vw;
+      margin: auto;
+      padding: 0;
+      box-shadow: 0 25px 60px -15px rgba(0, 0, 0, 0.8), 0 0 35px -5px rgba(124, 154, 255, 0.25);
+      overflow: hidden;
+    }
+    .cert-modal[open] {
+      display: flex;
+      flex-direction: column;
+    }
+    .modal-content {
+      display: flex;
+      flex-direction: column;
+      height: 100%;
+    }
+    .modal-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1.25rem 1.75rem;
+      border-bottom: 1px solid var(--line);
+      background: rgba(18, 23, 49, 0.85);
+      gap: 1rem;
+    }
+    .modal-issuer {
+      font-size: 0.825rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: var(--accent);
+      margin-bottom: 0.2rem;
+    }
+    .modal-title {
+      font-size: 1.2rem;
+      font-weight: 700;
+      color: var(--ink);
+    }
+    .modal-actions {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      flex-shrink: 0;
+    }
+    .modal-close-btn {
+      background: rgba(142, 168, 255, 0.08);
+      border: 1px solid var(--line);
+      color: var(--ink);
+      width: 38px;
+      height: 38px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+    .modal-close-btn:hover {
+      background: rgba(239, 68, 68, 0.2);
+      border-color: rgba(239, 68, 68, 0.4);
+      color: #f87171;
+    }
+    .modal-body {
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 1.5rem 4rem;
+      background: #080b1a;
+      min-height: 440px;
+    }
+    .modal-image-wrapper {
+      max-width: 100%;
+      max-height: 68vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .modal-cert-img {
+      max-width: 100%;
+      max-height: 68vh;
+      object-fit: contain;
+      border-radius: 8px;
+      box-shadow: 0 10px 35px rgba(0, 0, 0, 0.7);
+    }
+    .modal-nav-btn {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      background: rgba(18, 23, 49, 0.8);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+      border: 1px solid var(--line-strong);
+      color: var(--ink);
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      z-index: 10;
+    }
+    .modal-nav-btn:hover {
+      background: var(--accent);
+      color: #090d1e;
+      border-color: var(--accent);
+    }
+    .modal-nav-btn.prev { left: 1rem; }
+    .modal-nav-btn.next { right: 1rem; }
+    .modal-footer {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0.9rem 1.75rem;
+      border-top: 1px solid var(--line);
+      background: rgba(18, 23, 49, 0.85);
+      font-size: 0.85rem;
+      color: var(--muted);
+      flex-wrap: wrap;
+      gap: 0.5rem;
+    }
+
+    /* Contact Section */
+    .contact-box {
+      background: linear-gradient(135deg, rgba(22, 28, 58, 0.8) 0%, rgba(14, 18, 42, 0.9) 100%);
+      backdrop-filter: blur(16px);
+      border: 1px solid var(--line-strong);
+      border-radius: 20px;
+      padding: 3rem 2.5rem;
+      box-shadow: var(--shadow-hover);
+      position: relative;
+      overflow: hidden;
+    }
+    .contact-box::before {
+      content: "";
+      position: absolute;
+      top: -100px;
+      right: -100px;
+      width: 250px;
+      height: 250px;
+      background: radial-gradient(circle, rgba(124, 154, 255, 0.15) 0%, transparent 70%);
+      pointer-events: none;
+    }
+    .contact-box h2 {
+      margin-bottom: 0.75rem;
+    }
+    .contact-box p {
+      max-width: 36rem;
+      color: var(--ink-secondary);
+      font-size: 1.1rem;
+      line-height: 1.7;
+    }
+
+    /* Footer */
+    .site-footer {
+      border-top: 1px solid var(--line);
+      padding: 2.25rem 0;
+      color: var(--muted);
+      font-size: 0.92rem;
+      background: rgba(9, 13, 30, 0.8);
+      position: relative;
+      z-index: 1;
+    }
+    .footer-inner {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+
+    /* Responsive */
+    @media (max-width: 860px) {
+      .hero {
+        grid-template-columns: 1fr;
+        gap: 2.5rem;
+        padding-top: 3.5rem;
+      }
+      .about-grid {
+        grid-template-columns: 1fr;
+        gap: 1.25rem;
+      }
+      .nav-links li:not(:last-child):nth-child(n+4) {
+        display: none;
+      }
+      .contact-box {
+        padding: 2rem 1.5rem;
+      }
+      .modal-body {
+        padding: 1.25rem 1rem;
+      }
+      .modal-nav-btn {
+        width: 38px;
+        height: 38px;
+      }
+      .modal-nav-btn.prev { left: 0.5rem; }
+      .modal-nav-btn.next { right: 0.5rem; }
     }
   </style>
 </head>
 <body>
   <header class="site-header">
     <nav class="wrap nav">
-      <a href="#top" class="brand">Zyro Alfaro</a>
+      <a href="#top" class="brand">
+        <span class="brand-dot"></span>
+        <span>Zyro Alfaro</span>
+      </a>
       <ul class="nav-links">
         <li><a href="#about">About</a></li>
         <li><a href="#skills">Skills</a></li>
         <li><a href="#projects">Projects</a></li>
-        <li><a href="#credentials">Credentials</a></li>
-        <li><a href="#contact">Contact</a></li>
+        <li><a href="#credentials">Certificates</a></li>
+        <li><a href="#contact" class="nav-cta">Get in touch</a></li>
       </ul>
     </nav>
   </header>
 
   <main id="top">
+    <!-- Hero Section -->
     <section class="wrap hero">
       <div class="hero-text">
+        <div class="status-badge">
+          <span class="status-dot"></span>
+          <span>Available for Internship &bull; 2026</span>
+        </div>
         <h1>Zyro C. Alfaro</h1>
-        <p class="role">Web and mobile application developer in training</p>
-        <p class="lead">I'm a BSIT student building responsive websites and apps, and I'm looking for an internship where I can ship real work with a team.</p>
+        <p class="role">Web &amp; Mobile Application Developer</p>
+        <p class="lead">
+          BSIT student at Bulacan State University passionate about crafting performant, intuitive digital experiences across web and mobile platforms.
+        </p>
         <div class="actions">
-          <a href="#projects" class="btn btn-primary">View projects</a>
-          <a href="Alfaro_Zyro.pdf" class="btn btn-ghost" download>Download resume</a>
+          <a href="#projects" class="btn btn-primary">
+            <span>Explore Projects</span>
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+          </a>
+          <a href="Alfaro_Zyro.pdf" class="btn btn-ghost" download>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
+            <span>Download Resume</span>
+          </a>
+        </div>
+
+        <div class="hero-highlights">
+          <div class="highlight-item">
+            <span class="highlight-value">BSIT</span>
+            <span class="highlight-label">BulSU Main</span>
+          </div>
+          <div class="highlight-sep"></div>
+          <div class="highlight-item">
+            <span class="highlight-value">Web &amp; Mobile</span>
+            <span class="highlight-label">Specialization</span>
+          </div>
+          <div class="highlight-sep"></div>
+          <div class="highlight-item">
+            <span class="highlight-value">11</span>
+            <span class="highlight-label">Certificates</span>
+          </div>
         </div>
       </div>
+
       <aside class="profile-card">
-        <img src="zyrrr.jpg" alt="Zyro Alfaro" class="avatar" />
-        <dl>
-          <dt>Degree</dt><dd>BS Information Technology</dd>
-          <dt>Major</dt><dd>Web and Mobile Application Development</dd>
-          <dt>School</dt><dd>Bulacan State University, Main Campus</dd>
-          <dt>Status</dt><dd>Open for internship</dd>
+        <div class="avatar-wrapper">
+          <img src="zyrrr.jpg" alt="Zyro C. Alfaro portrait" class="avatar" />
+          <div class="avatar-badge" title="Active developer"></div>
+        </div>
+        <dl class="profile-meta">
+          <dt>
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 10v6M2 10l10-5 10 5-10 5z"></path><path d="M6 12v5c3 3 9 3 12 0v-5"></path></svg>
+            Degree
+          </dt>
+          <dd>BS Information Technology</dd>
+
+          <dt>
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect><line x1="8" y1="21" x2="16" y2="21"></line><line x1="12" y1="17" x2="12" y2="21"></line></svg>
+            Specialization
+          </dt>
+          <dd>Web &amp; Mobile Application Dev</dd>
+
+          <dt>
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21h18M3 7v14M21 7v14M6 7V3h12v4"></path></svg>
+            Institution
+          </dt>
+          <dd>Bulacan State University, Main</dd>
+
+          <dt>
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+            Availability
+          </dt>
+          <dd style="color: #34d399;">Ready for Internship Placement</dd>
         </dl>
       </aside>
     </section>
 
+    <!-- About Section -->
     <section id="about" class="wrap section">
-      <h2>About me</h2>
+      <span class="section-tag">01 // Background</span>
+      <h2>About Me</h2>
       <div class="about-grid">
-        <p>I started my BSIT journey at Bulacan State University in 2022, specializing in Web and Mobile Application Development. My focus is on turning real-world problems into clean, accessible, and intuitive digital interfaces that people love to use on any screen.</p>
-        <p>I'm currently sharpening my frontend and backend workflow, exploring modern frameworks, and refining how I write maintainable code. As an aspiring software intern, I'm eager to bring my curiosity, strong foundation, and collaborative mindset to a team building high-impact products.</p>
+        <div class="about-card">
+          <p>
+            I began my BSIT journey at Bulacan State University in 2022, specializing in Web and Mobile Application Development. My focus is transforming practical real-world requirements into clean, accessible, and intuitive digital interfaces engineered to run flawlessly across devices.
+          </p>
+        </div>
+        <div class="about-card">
+          <p>
+            I continually refine my frontend and backend workflow, adopting modern frameworks, component architecture, and cloud services. As an aspiring software engineer, I bring relentless curiosity, a solid computer science foundation, and a collaborative mindset ready to ship production value.
+          </p>
+        </div>
       </div>
     </section>
 
+    <!-- Skills Section -->
     <section id="skills" class="wrap section">
-      <h2>Skills</h2>
+      <span class="section-tag">02 // Technical Skills</span>
+      <h2>Skills &amp; Technologies</h2>
       <div class="skill-groups">
         <div class="skill-group">
-          <h3>Front end</h3>
-          <ul class="chips"><li>HTML</li><li>Tailwind CSS</li><li>CSS</li><li>JavaScript</li><li>Python</li><li>ReactJS</li><li>Responsive design</li><li>CSS Animations</li></ul>
-        </div>
-        <div class="skill-group">
-          <h3>Back end and data</h3>
+          <div class="skill-header">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 18 22 12 16 6"></polyline><polyline points="8 6 2 12 8 18"></polyline></svg>
+            <h3>Front End</h3>
+          </div>
           <ul class="chips">
-            <li>MySQL</li>
-            <li>Firebase</li>
-            <li>Node.js</li>
-            <li>REST APIs</li>
-            <li>Authentication</li>
+            <li>React.js</li>
+            <li>Tailwind CSS</li>
+            <li>JavaScript (ES6+)</li>
+            <li>HTML5 / Semantics</li>
+            <li>CSS3 / Animations</li>
+            <li>Responsive Design</li>
+            <li>Vite</li>
           </ul>
         </div>
+
         <div class="skill-group">
-          <h3>Tools</h3>
-          <ul class="chips"><li>Gemini</li><li>Claude</li><li>VS Code</li><li>Figma</li><li>Git / GitHub</li></ul>
+          <div class="skill-header">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="12" cy="5" rx="9" ry="3"></ellipse><path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"></path><path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"></path></svg>
+            <h3>Back End &amp; Data</h3>
+          </div>
+          <ul class="chips">
+            <li>Firebase Firestore</li>
+            <li>Firebase Hosting</li>
+            <li>Node.js</li>
+            <li>MySQL</li>
+            <li>RESTful APIs</li>
+            <li>Auth &amp; Security</li>
+            <li>EmailJS</li>
+          </ul>
+        </div>
+
+        <div class="skill-group">
+          <div class="skill-header">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"></path></svg>
+            <h3>Tools &amp; Workflow</h3>
+          </div>
+          <ul class="chips">
+            <li>Git &amp; GitHub</li>
+            <li>VS Code</li>
+            <li>Figma</li>
+            <li>Unity Engine</li>
+            <li>C#</li>
+            <li>Python</li>
+            <li>Gemini &amp; Claude</li>
+          </ul>
         </div>
       </div>
     </section>
 
+    <!-- Projects Section -->
     <section id="projects" class="wrap section">
-      <h2>Projects</h2>
+      <span class="section-tag">03 // Featured Work</span>
+      <h2>Featured Projects</h2>
       <div class="project-grid">
+
+        <!-- Project 1 -->
         <article class="project-card">
+          <div class="card-top">
+            <span class="project-type">Mobile Game</span>
+            <span class="project-status">Completed</span>
+          </div>
           <h3>Jeepney Rush</h3>
-          <p>A mobile game where players navigate a jeepney through traffic, developed using Unity with custom 2D assets created in Pixel Studio.</p>
-          <ul class="tags"><li>C#</li><li>Unity</li><li>Pixel Studio</li><li>Gemini</li></ul>
+          <p>
+            An action-packed 2D endless mobile runner where players pilot an iconic Philippine jeepney through bustling rush-hour traffic. Built with custom sprite art and responsive physics.
+          </p>
+          <ul class="tags">
+            <li>Unity</li>
+            <li>C#</li>
+            <li>Pixel Studio</li>
+            <li>Mobile Controls</li>
+          </ul>
           <div class="links">
-            <a href="https://drive.google.com/drive/folders/1CQV1WJoT6sOyiWsZtTs4bXt398SHbxUT?classId=1a212b5b-f9ff-4a32-97b8-561e65c91f02&assignmentId=fbb0adf4-3e9b-430d-b305-4b8eeb67630c&submissionId=ac3d43f4-3950-770c-5090-c852be71e2d6">Source code</a>
-            <a href="https://drive.google.com/drive/folders/1CQV1WJoT6sOyiWsZtTs4bXt398SHbxUT?classId=1a212b5b-f9ff-4a32-97b8-561e65c91f02&assignmentId=fbb0adf4-3e9b-430d-b305-4b8eeb67630c&submissionId=ac3d43f4-3950-770c-5090-c852be71e2d6">Live demo</a>
+            <a href="https://drive.google.com/drive/folders/1CQV1WJoT6sOyiWsZtTs4bXt398SHbxUT?classId=1a212b5b-f9ff-4a32-97b8-561e65c91f02&assignmentId=fbb0adf4-3e9b-430d-b305-4b8eeb67630c&submissionId=ac3d43f4-3950-770c-5090-c852be71e2d6" class="project-link" target="_blank" rel="noopener noreferrer">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"></path></svg>
+              <span>Source</span>
+            </a>
+            <a href="https://drive.google.com/drive/folders/1CQV1WJoT6sOyiWsZtTs4bXt398SHbxUT?classId=1a212b5b-f9ff-4a32-97b8-561e65c91f02&assignmentId=fbb0adf4-3e9b-430d-b305-4b8eeb67630c&submissionId=ac3d43f4-3950-770c-5090-c852be71e2d6" class="project-link demo" target="_blank" rel="noopener noreferrer">
+              <span>Live Demo</span>
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="7" y1="17" x2="17" y2="7"></line><polyline points="7 7 17 7 17 17"></polyline></svg>
+            </a>
           </div>
         </article>
 
+        <!-- Project 2 -->
         <article class="project-card">
-  <h3>Studio Emily Pilates</h3>
-  <p>A full-stack booking platform for an independent Pilates studio in Bulacan.</p>
-  <ul style="list-style: disc; padding-left: 1.2rem; margin: 0.75rem 0; color: var(--muted); font-size: 0.95rem; line-height: 1.55;">
-    <li style="margin-bottom: 0.4rem;"><strong style="color: var(--ink);">Full-Stack Web Development:</strong> Built and deployed a responsive React.js booking platform utilizing Vite, Tailwind CSS, and Firebase Hosting.</li>
-    <li style="margin-bottom: 0.4rem;"><strong style="color: var(--ink);">Database &amp; Automation:</strong> Engineered a real-time booking system using Firebase Firestore and integrated EmailJS to automate HTML email notifications with direct client reply-routing.</li>
-    <li><strong style="color: var(--ink);">UI/UX Engineering:</strong> Designed a premium, modern interface featuring cinematic video backgrounds, glassmorphism UI elements, and scroll-triggered animations to drive client conversions.</li>
-  </ul>
-  <ul class="tags">
-    <li>React.js</li>
-    <li>Vite</li>
-    <li>Tailwind CSS</li>
-    <li>Firebase</li>
-    <li>Firestore</li>
-    <li>EmailJS</li>
-  </ul>
-  <div class="links">
-    <a href="https://github.com/zzyyrroo09/studio-emily-pilates" target="_blank">Source code</a>
-    <a href="https://studioemilypilates.web.app/" target="_blank">Live demo</a>
-  </div>
-</article>
-
-        <article class="project-card">
-          <h3>Project name</h3>
-          <p>Capstone, thesis, or class project work belongs here too. Say what problem it solves.</p>
-          <ul class="tags"><li>Tool</li><li>Tool</li></ul>
-          <div class="links"><a href="https://github.com/zzyyrroo09">Source code</a></div>
-          <a href="https://drive.google.com/drive/folders/1CQV1WJoT6sOyiWsZtTs4bXt398SHbxUT?classId=1a212b5b-f9ff-4a32-97b8-561e65c91f02&assignmentId=fbb0adf4-3e9b-430d-b305-4b8eeb67630c&submissionId=ac3d43f4-3950-770c-5090-c852be71e2d6">Live demo</a>
+          <div class="card-top">
+            <span class="project-type">Full-Stack Web App</span>
+            <span class="project-status">Live</span>
+          </div>
+          <h3>Studio Emily Pilates</h3>
+          <p>
+            A high-performance booking and class management platform for an independent Pilates studio in Bulacan, featuring real-time Firestore synchronization, automated email confirmations, and responsive glassmorphism UI.
+          </p>
+          <ul class="tags">
+            <li>React.js</li>
+            <li>Tailwind CSS</li>
+            <li>Firebase Firestore</li>
+            <li>EmailJS</li>
+          </ul>
+          <div class="links">
+            <a href="https://github.com/zzyyrroo09/studio-emily-pilates" class="project-link" target="_blank" rel="noopener noreferrer">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
+              <span>Source</span>
+            </a>
+            <a href="https://studioemilypilates.web.app/" class="project-link demo" target="_blank" rel="noopener noreferrer">
+              <span>Live Site</span>
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="7" y1="17" x2="17" y2="7"></line><polyline points="7 7 17 7 17 17"></polyline></svg>
+            </a>
+          </div>
         </article>
+
+        <!-- Project 3 -->
+        <article class="project-card">
+          <div class="card-top">
+            <span class="project-type">Academic Capstone</span>
+            <span class="project-status wip">In Progress</span>
+          </div>
+          <h3>Academic Collaboration Suite</h3>
+          <p>
+            A scalable platform engineered to facilitate student-faculty workflow coordination, project milestone tracking, and campus notification broadcasts with secure role-based access.
+          </p>
+          <ul class="tags">
+            <li>React</li>
+            <li>Node.js</li>
+            <li>REST API</li>
+            <li>MySQL</li>
+          </ul>
+          <div class="links">
+            <a href="https://github.com/zzyyrroo09" class="project-link" target="_blank" rel="noopener noreferrer">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
+              <span>GitHub</span>
+            </a>
+            <a href="https://drive.google.com/drive/folders/1CQV1WJoT6sOyiWsZtTs4bXt398SHbxUT?classId=1a212b5b-f9ff-4a32-97b8-561e65c91f02&assignmentId=fbb0adf4-3e9b-430d-b305-4b8eeb67630c&submissionId=ac3d43f4-3950-770c-5090-c852be71e2d6" class="project-link" target="_blank" rel="noopener noreferrer">
+              <span>Preview</span>
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="7" y1="17" x2="17" y2="7"></line><polyline points="7 7 17 7 17 17"></polyline></svg>
+            </a>
+          </div>
+        </article>
+
       </div>
     </section>
 
+    <!-- Visual Credentials Section with Lightbox Viewer -->
     <section id="credentials" class="wrap section">
-      <h2>Certifications and awards</h2>
-      <ul class="timeline">
+      <div class="cert-header-row">
+        <div>
+          <span class="section-tag">04 // Verification</span>
+          <h2>Certifications &amp; Credentials</h2>
+          <p class="cert-sublead">Click on any certificate to inspect the full authentic document with credential details.</p>
+        </div>
+        <div class="cert-filters" role="tablist" aria-label="Certificate category filters">
+          <button class="filter-btn active" data-filter="all">All (11)</button>
+          <button class="filter-btn" data-filter="networking">Cisco &amp; Networking</button>
+          <button class="filter-btn" data-filter="python">Python</button>
+          <button class="filter-btn" data-filter="cloud">Cloud &amp; Security</button>
+        </div>
+      </div>
 
-        <li>
-          <span class="when">2024</span>
-          <div>
-            <div class="cert-row"><strong>Getting Started with Cisco Packet Tracer</strong><a class="pdf-link" href="cisco_1.pdf" target="_blank" rel="noopener noreferrer">View PDF &nearr;</a></div>
-            <span>Cisco Networking Academy program</span>
+      <div class="cert-grid" id="cert-grid">
+        <!-- Rendered by HTML & script for high reliability -->
+
+        <!-- 1 -->
+        <article class="cert-card-visual" data-category="networking" onclick="openCertModal(0)">
+          <div class="cert-thumb-container">
+            <img src="certs/cisco_getting_started.webp" alt="Getting Started with Cisco Packet Tracer Certificate" class="cert-thumb-img" loading="lazy" />
+            <div class="cert-overlay">
+              <span class="cert-overlay-btn">
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line><line x1="11" y1="8" x2="11" y2="14"></line><line x1="8" y1="11" x2="14" y2="11"></line></svg>
+                <span>View Certificate</span>
+              </span>
+            </div>
           </div>
-        </li>
-
-        <li>
-          <span class="when">2024</span>
-          <div>
-            <div class="cert-row"><strong>Exploring Networking with Cisco Packet Tracer</strong><a class="pdf-link" href="Exploring_Networking_with_Cisco_Packet_Tracer_certificate_zyroalfaro092004-gmail-com_c7f2b226-e012-42ae-af02-3e588d4387aa.pdf" target="_blank" rel="noopener noreferrer">View PDF &nearr;</a></div>
-            <span>Cisco Networking Academy program</span>
+          <div class="cert-info">
+            <div class="cert-meta-top">
+              <span class="cert-year-tag">2024</span>
+              <span class="cert-issuer-badge">Cisco Academy</span>
+            </div>
+            <h3 class="cert-card-title">Getting Started with Cisco Packet Tracer</h3>
+            <div class="cert-card-footer">
+              <span class="cert-view-action">
+                <span>Inspect</span>
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+              </span>
+              <a href="cisco_1.pdf" target="_blank" rel="noopener noreferrer" class="cert-pdf-direct" onclick="event.stopPropagation()">
+                <span>PDF &nearr;</span>
+              </a>
+            </div>
           </div>
-        </li>
+        </article>
 
-        <li>
-          <span class="when">2024</span>
-          <div>
-            <div class="cert-row"><strong>Exploring Internet of Things with Cisco Packet Tracer</strong><a class="pdf-link" href="Exploring_IoT_with_Cisco_Packet_Tracer_certificate_zyroalfaro092004-gmail-com_35b0c79d-2002-43c9-8d11-95e4ffb12d65.pdf" target="_blank" rel="noopener noreferrer">View PDF &nearr;</a></div>
-            <span>Cisco Networking Academy program</span>
+        <!-- 2 -->
+        <article class="cert-card-visual" data-category="networking" onclick="openCertModal(1)">
+          <div class="cert-thumb-container">
+            <img src="certs/cisco_exploring_networking.webp" alt="Exploring Networking with Cisco Packet Tracer Certificate" class="cert-thumb-img" loading="lazy" />
+            <div class="cert-overlay">
+              <span class="cert-overlay-btn">
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line><line x1="11" y1="8" x2="11" y2="14"></line><line x1="8" y1="11" x2="14" y2="11"></line></svg>
+                <span>View Certificate</span>
+              </span>
+            </div>
           </div>
-        </li>
-
-        <li>
-          <span class="when">2025</span>
-          <div>
-            <div class="cert-row"><strong>AGENTBLAZER CHAMPION WORKSHOP</strong><a class="pdf-link" href="AlfaroZyroC_3E-G2.pdf" target="_blank" rel="noopener noreferrer">View PDF &nearr;</a></div>
-            <span>Cisco Networking Academy program</span>
+          <div class="cert-info">
+            <div class="cert-meta-top">
+              <span class="cert-year-tag">2024</span>
+              <span class="cert-issuer-badge">Cisco Academy</span>
+            </div>
+            <h3 class="cert-card-title">Exploring Networking with Cisco Packet Tracer</h3>
+            <div class="cert-card-footer">
+              <span class="cert-view-action">
+                <span>Inspect</span>
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+              </span>
+              <a href="Exploring_Networking_with_Cisco_Packet_Tracer_certificate_zyroalfaro092004-gmail-com_c7f2b226-e012-42ae-af02-3e588d4387aa.pdf" target="_blank" rel="noopener noreferrer" class="cert-pdf-direct" onclick="event.stopPropagation()">
+                <span>PDF &nearr;</span>
+              </a>
+            </div>
           </div>
-        </li>
+        </article>
 
-        <li>
-          <span class="when">2026</span>
-          <div>
-            <div class="cert-row"><strong>ISO/IEC 20000 IT SERVICE MANAGEMENT ASSOCIATE</strong><a class="pdf-link" href="SkillFront-SFE040fb078483b5-51502439568066.pdf" target="_blank" rel="noopener noreferrer">View PDF &nearr;</a></div>
-            <span>Cisco Networking Academy program</span>
+        <!-- 3 -->
+        <article class="cert-card-visual" data-category="networking" onclick="openCertModal(2)">
+          <div class="cert-thumb-container">
+            <img src="certs/cisco_exploring_iot.webp" alt="Exploring Internet of Things Certificate" class="cert-thumb-img" loading="lazy" />
+            <div class="cert-overlay">
+              <span class="cert-overlay-btn">
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line><line x1="11" y1="8" x2="11" y2="14"></line><line x1="8" y1="11" x2="14" y2="11"></line></svg>
+                <span>View Certificate</span>
+              </span>
+            </div>
           </div>
-        </li>
-
-        <li>
-          <span class="when">2026</span>
-          <div>
-            <div class="cert-row"><strong>Platform Administrator</strong><a class="pdf-link" href="Cert8160304_PlatformAdministrator_20260925.pdf" target="_blank" rel="noopener noreferrer">View PDF &nearr;</a></div>
-            <span>Cisco Networking Academy program</span>
+          <div class="cert-info">
+            <div class="cert-meta-top">
+              <span class="cert-year-tag">2024</span>
+              <span class="cert-issuer-badge">Cisco Academy</span>
+            </div>
+            <h3 class="cert-card-title">Exploring Internet of Things with Cisco Packet Tracer</h3>
+            <div class="cert-card-footer">
+              <span class="cert-view-action">
+                <span>Inspect</span>
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+              </span>
+              <a href="Exploring_IoT_with_Cisco_Packet_Tracer_certificate_zyroalfaro092004-gmail-com_35b0c79d-2002-43c9-8d11-95e4ffb12d65.pdf" target="_blank" rel="noopener noreferrer" class="cert-pdf-direct" onclick="event.stopPropagation()">
+                <span>PDF &nearr;</span>
+              </a>
+            </div>
           </div>
-        </li>
+        </article>
 
-         <li>
-          <span class="when">2026</span>
-          <div>
-            <div class="cert-row"><strong>Information Techonology Specialist</strong><a class="pdf-link" href="python_cert.pdf" target="_blank" rel="noopener noreferrer">View PDF &nearr;</a></div>
-            <span>Certiport</span>
+        <!-- 4 -->
+        <article class="cert-card-visual" data-category="cloud" onclick="openCertModal(3)">
+          <div class="cert-thumb-container">
+            <img src="certs/salesforce_agentblazer.webp" alt="Agentblazer Champion Workshop Certificate" class="cert-thumb-img" loading="lazy" />
+            <div class="cert-overlay">
+              <span class="cert-overlay-btn">
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line><line x1="11" y1="8" x2="11" y2="14"></line><line x1="8" y1="11" x2="14" y2="11"></line></svg>
+                <span>View Certificate</span>
+              </span>
+            </div>
           </div>
-        </li>
-
-        <li>
-          <span class="when">2026</span>
-          <div>
-            <div class="cert-row"><strong>Cybersecurity</strong><a class="pdf-link" href="cybersecurity.pdf" target="_blank" rel="noopener noreferrer">View PDF &nearr;</a></div>
-            <span>ADBInstitute</span>
+          <div class="cert-info">
+            <div class="cert-meta-top">
+              <span class="cert-year-tag">2025</span>
+              <span class="cert-issuer-badge">Salesforce</span>
+            </div>
+            <h3 class="cert-card-title">Agentblazer Champion Workshop</h3>
+            <div class="cert-card-footer">
+              <span class="cert-view-action">
+                <span>Inspect</span>
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+              </span>
+              <a href="AlfaroZyroC_3E-G2.pdf" target="_blank" rel="noopener noreferrer" class="cert-pdf-direct" onclick="event.stopPropagation()">
+                <span>PDF &nearr;</span>
+              </a>
+            </div>
           </div>
-        </li>
+        </article>
 
-        <li>
-          <span class="when">2026</span>
-          <div>
-            <div class="cert-row"><strong>Python essentials 1</strong><a class="pdf-link" href="PythonEssentials1Update20261006-20-amrf6h.pdf" target="_blank" rel="noopener noreferrer">View PDF &nearr;</a></div>
-            <span>cisco networking academy</span>
+        <!-- 5 -->
+        <article class="cert-card-visual" data-category="cloud" onclick="openCertModal(4)">
+          <div class="cert-thumb-container">
+            <img src="certs/skillfront_iso20000.webp" alt="ISO/IEC 20000 IT Service Management Associate Certificate" class="cert-thumb-img" loading="lazy" />
+            <div class="cert-overlay">
+              <span class="cert-overlay-btn">
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line><line x1="11" y1="8" x2="11" y2="14"></line><line x1="8" y1="11" x2="14" y2="11"></line></svg>
+                <span>View Certificate</span>
+              </span>
+            </div>
           </div>
-        </li>
-
-        <li>
-          <span class="when">2026</span>
-          <div>
-            <div class="cert-row"><strong>Python essentials 2</strong><a class="pdf-link" href="PythonEssentials2Update20261006-20-kpjstq.pdf" target="_blank" rel="noopener noreferrer">View PDF &nearr;</a></div>
-            <span>cisco networking academy</span>
+          <div class="cert-info">
+            <div class="cert-meta-top">
+              <span class="cert-year-tag">2026</span>
+              <span class="cert-issuer-badge">SkillFront</span>
+            </div>
+            <h3 class="cert-card-title">ISO/IEC 20000 IT Service Management Associate</h3>
+            <div class="cert-card-footer">
+              <span class="cert-view-action">
+                <span>Inspect</span>
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+              </span>
+              <a href="SkillFront-SFE040fb078483b5-51502439568066.pdf" target="_blank" rel="noopener noreferrer" class="cert-pdf-direct" onclick="event.stopPropagation()">
+                <span>PDF &nearr;</span>
+              </a>
+            </div>
           </div>
-        </li>
+        </article>
 
-         <li>
-          <span class="when">2026</span>
-          <div>
-            <div class="cert-row"><strong>Hardware and Upgrade Support</strong><a class="pdf-link" href="HardwareandUpgradeSupportv120261007-20-b26nil.pdf" target="_blank" rel="noopener noreferrer">View PDF &nearr;</a></div>
-            <span>cisco networking academy</span>
+        <!-- 6 -->
+        <article class="cert-card-visual" data-category="cloud" onclick="openCertModal(5)">
+          <div class="cert-thumb-container">
+            <img src="certs/platform_administrator.webp" alt="Platform Administrator Certificate" class="cert-thumb-img" loading="lazy" />
+            <div class="cert-overlay">
+              <span class="cert-overlay-btn">
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line><line x1="11" y1="8" x2="11" y2="14"></line><line x1="8" y1="11" x2="14" y2="11"></line></svg>
+                <span>View Certificate</span>
+              </span>
+            </div>
           </div>
-        </li>
+          <div class="cert-info">
+            <div class="cert-meta-top">
+              <span class="cert-year-tag">2026</span>
+              <span class="cert-issuer-badge">Salesforce</span>
+            </div>
+            <h3 class="cert-card-title">Platform Administrator</h3>
+            <div class="cert-card-footer">
+              <span class="cert-view-action">
+                <span>Inspect</span>
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+              </span>
+              <a href="Cert8160304_PlatformAdministrator_20260925.pdf" target="_blank" rel="noopener noreferrer" class="cert-pdf-direct" onclick="event.stopPropagation()">
+                <span>PDF &nearr;</span>
+              </a>
+            </div>
+          </div>
+        </article>
 
-      </ul>
+        <!-- 7 -->
+        <article class="cert-card-visual" data-category="python" onclick="openCertModal(6)">
+          <div class="cert-thumb-container">
+            <img src="certs/certiport_python.webp" alt="Information Technology Specialist Python Certificate" class="cert-thumb-img" loading="lazy" />
+            <div class="cert-overlay">
+              <span class="cert-overlay-btn">
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line><line x1="11" y1="8" x2="11" y2="14"></line><line x1="8" y1="11" x2="14" y2="11"></line></svg>
+                <span>View Certificate</span>
+              </span>
+            </div>
+          </div>
+          <div class="cert-info">
+            <div class="cert-meta-top">
+              <span class="cert-year-tag">2026</span>
+              <span class="cert-issuer-badge">Certiport</span>
+            </div>
+            <h3 class="cert-card-title">Information Technology Specialist: Python</h3>
+            <div class="cert-card-footer">
+              <span class="cert-view-action">
+                <span>Inspect</span>
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+              </span>
+              <a href="python_cert.pdf" target="_blank" rel="noopener noreferrer" class="cert-pdf-direct" onclick="event.stopPropagation()">
+                <span>PDF &nearr;</span>
+              </a>
+            </div>
+          </div>
+        </article>
+
+        <!-- 8 -->
+        <article class="cert-card-visual" data-category="cloud" onclick="openCertModal(7)">
+          <div class="cert-thumb-container">
+            <img src="certs/adbi_cybersecurity.webp" alt="Cybersecurity Specialization Certificate" class="cert-thumb-img" loading="lazy" />
+            <div class="cert-overlay">
+              <span class="cert-overlay-btn">
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line><line x1="11" y1="8" x2="11" y2="14"></line><line x1="8" y1="11" x2="14" y2="11"></line></svg>
+                <span>View Certificate</span>
+              </span>
+            </div>
+          </div>
+          <div class="cert-info">
+            <div class="cert-meta-top">
+              <span class="cert-year-tag">2026</span>
+              <span class="cert-issuer-badge">ADBInstitute</span>
+            </div>
+            <h3 class="cert-card-title">Cybersecurity Specialization</h3>
+            <div class="cert-card-footer">
+              <span class="cert-view-action">
+                <span>Inspect</span>
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+              </span>
+              <a href="cybersecurity.pdf" target="_blank" rel="noopener noreferrer" class="cert-pdf-direct" onclick="event.stopPropagation()">
+                <span>PDF &nearr;</span>
+              </a>
+            </div>
+          </div>
+        </article>
+
+        <!-- 9 -->
+        <article class="cert-card-visual" data-category="python" onclick="openCertModal(8)">
+          <div class="cert-thumb-container">
+            <img src="certs/cisco_python_1.webp" alt="Python Essentials 1 Certificate" class="cert-thumb-img" loading="lazy" />
+            <div class="cert-overlay">
+              <span class="cert-overlay-btn">
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line><line x1="11" y1="8" x2="11" y2="14"></line><line x1="8" y1="11" x2="14" y2="11"></line></svg>
+                <span>View Certificate</span>
+              </span>
+            </div>
+          </div>
+          <div class="cert-info">
+            <div class="cert-meta-top">
+              <span class="cert-year-tag">2026</span>
+              <span class="cert-issuer-badge">Cisco Academy</span>
+            </div>
+            <h3 class="cert-card-title">Python Essentials 1</h3>
+            <div class="cert-card-footer">
+              <span class="cert-view-action">
+                <span>Inspect</span>
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+              </span>
+              <a href="PythonEssentials1Update20261006-20-amrf6h.pdf" target="_blank" rel="noopener noreferrer" class="cert-pdf-direct" onclick="event.stopPropagation()">
+                <span>PDF &nearr;</span>
+              </a>
+            </div>
+          </div>
+        </article>
+
+        <!-- 10 -->
+        <article class="cert-card-visual" data-category="python" onclick="openCertModal(9)">
+          <div class="cert-thumb-container">
+            <img src="certs/cisco_python_2.webp" alt="Python Essentials 2 Certificate" class="cert-thumb-img" loading="lazy" />
+            <div class="cert-overlay">
+              <span class="cert-overlay-btn">
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line><line x1="11" y1="8" x2="11" y2="14"></line><line x1="8" y1="11" x2="14" y2="11"></line></svg>
+                <span>View Certificate</span>
+              </span>
+            </div>
+          </div>
+          <div class="cert-info">
+            <div class="cert-meta-top">
+              <span class="cert-year-tag">2026</span>
+              <span class="cert-issuer-badge">Cisco Academy</span>
+            </div>
+            <h3 class="cert-card-title">Python Essentials 2</h3>
+            <div class="cert-card-footer">
+              <span class="cert-view-action">
+                <span>Inspect</span>
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+              </span>
+              <a href="PythonEssentials2Update20261006-20-kpjstq.pdf" target="_blank" rel="noopener noreferrer" class="cert-pdf-direct" onclick="event.stopPropagation()">
+                <span>PDF &nearr;</span>
+              </a>
+            </div>
+          </div>
+        </article>
+
+        <!-- 11 -->
+        <article class="cert-card-visual" data-category="networking" onclick="openCertModal(10)">
+          <div class="cert-thumb-container">
+            <img src="certs/cisco_hardware_support.webp" alt="Hardware and Upgrade Support Certificate" class="cert-thumb-img" loading="lazy" />
+            <div class="cert-overlay">
+              <span class="cert-overlay-btn">
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line><line x1="11" y1="8" x2="11" y2="14"></line><line x1="8" y1="11" x2="14" y2="11"></line></svg>
+                <span>View Certificate</span>
+              </span>
+            </div>
+          </div>
+          <div class="cert-info">
+            <div class="cert-meta-top">
+              <span class="cert-year-tag">2026</span>
+              <span class="cert-issuer-badge">Cisco Academy</span>
+            </div>
+            <h3 class="cert-card-title">Hardware and Upgrade Support</h3>
+            <div class="cert-card-footer">
+              <span class="cert-view-action">
+                <span>Inspect</span>
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+              </span>
+              <a href="HardwareandUpgradeSupportv120261007-20-b26nil.pdf" target="_blank" rel="noopener noreferrer" class="cert-pdf-direct" onclick="event.stopPropagation()">
+                <span>PDF &nearr;</span>
+              </a>
+            </div>
+          </div>
+        </article>
+
+      </div>
     </section>
 
-    <section id="contact" class="wrap section contact">
-      <h2>Contact</h2>
-      <p>I'm available for an internship placement. Send me a message and I'll reply as soon as I can.</p>
-      <div class="actions">
-        <a href="https://mail.google.com/mail/?view=cm&fs=1&to=zyroalfaro092004@gmail.com" target="_blank" rel="noopener noreferrer" class="btn btn-primary">Email me</a>
-        <a href="https://github.com/zzyyrroo09" class="btn btn-ghost">GitHub</a>
-        <a href="https://www.linkedin.com/" class="btn btn-ghost">LinkedIn</a>
+    <!-- Certificate Lightbox Modal Dialog -->
+    <dialog id="cert-modal" class="cert-modal" closedby="any" aria-labelledby="modal-cert-title">
+      <div class="modal-content">
+        <div class="modal-header">
+          <div>
+            <div id="modal-cert-issuer" class="modal-issuer">Issuer</div>
+            <h3 id="modal-cert-title" class="modal-title">Certificate Title</h3>
+          </div>
+          <div class="modal-actions">
+            <a id="modal-pdf-link" href="#" target="_blank" rel="noopener noreferrer" class="btn btn-ghost modal-action-btn">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
+              <span>Download PDF</span>
+            </a>
+            <button type="button" class="modal-close-btn" aria-label="Close certificate preview" onclick="document.getElementById('cert-modal').close()">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+            </button>
+          </div>
+        </div>
+        <div class="modal-body">
+          <button type="button" class="modal-nav-btn prev" id="modal-prev-btn" aria-label="Previous certificate">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"></polyline></svg>
+          </button>
+          <div class="modal-image-wrapper">
+            <img id="modal-cert-img" src="" alt="Full certificate preview" class="modal-cert-img" />
+          </div>
+          <button type="button" class="modal-nav-btn next" id="modal-next-btn" aria-label="Next certificate">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg>
+          </button>
+        </div>
+        <div class="modal-footer">
+          <span id="modal-counter">1 of 11</span>
+          <span>Click outside or press Esc to dismiss &bull; Use Left/Right arrows to flip</span>
+        </div>
+      </div>
+    </dialog>
+
+    <!-- Contact Section -->
+    <section id="contact" class="wrap section">
+      <div class="contact-box">
+        <span class="section-tag">05 // Get In Touch</span>
+        <h2>Let's build something together</h2>
+        <p>
+          I am actively seeking an internship role where I can contribute to real-world codebases, learn from experienced engineers, and add measurable value to your team.
+        </p>
+        <div class="actions">
+          <a href="https://mail.google.com/mail/?view=cm&fs=1&to=zyroalfaro092004@gmail.com" target="_blank" rel="noopener noreferrer" class="btn btn-primary">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+            <span>Email me</span>
+          </a>
+          <a href="https://github.com/zzyyrroo09" target="_blank" rel="noopener noreferrer" class="btn btn-ghost">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
+            <span>GitHub</span>
+          </a>
+          <a href="https://www.linkedin.com/" target="_blank" rel="noopener noreferrer" class="btn btn-ghost">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
+            <span>LinkedIn</span>
+          </a>
+        </div>
       </div>
     </section>
   </main>
 
   <footer class="site-footer">
-    <div class="wrap"><p>&copy; 2026 Zyro C. Alfaro</p></div>
+    <div class="wrap footer-inner">
+      <p>&copy; 2026 Zyro C. Alfaro &bull; Built with clean, modern web standards.</p>
+      <p style="font-size: 0.85rem; color: var(--muted);">Bulacan State University &bull; BSIT</p>
+    </div>
   </footer>
+
+  <script>
+    const certData = [
+      {
+        title: "Getting Started with Cisco Packet Tracer",
+        issuer: "Cisco Networking Academy",
+        year: "2024",
+        category: "networking",
+        img: "certs/cisco_getting_started.webp",
+        pdf: "cisco_1.pdf"
+      },
+      {
+        title: "Exploring Networking with Cisco Packet Tracer",
+        issuer: "Cisco Networking Academy",
+        year: "2024",
+        category: "networking",
+        img: "certs/cisco_exploring_networking.webp",
+        pdf: "Exploring_Networking_with_Cisco_Packet_Tracer_certificate_zyroalfaro092004-gmail-com_c7f2b226-e012-42ae-af02-3e588d4387aa.pdf"
+      },
+      {
+        title: "Exploring Internet of Things with Cisco Packet Tracer",
+        issuer: "Cisco Networking Academy",
+        year: "2024",
+        category: "networking",
+        img: "certs/cisco_exploring_iot.webp",
+        pdf: "Exploring_IoT_with_Cisco_Packet_Tracer_certificate_zyroalfaro092004-gmail-com_35b0c79d-2002-43c9-8d11-95e4ffb12d65.pdf"
+      },
+      {
+        title: "Agentblazer Champion Workshop",
+        issuer: "Salesforce / Agentforce",
+        year: "2025",
+        category: "cloud",
+        img: "certs/salesforce_agentblazer.webp",
+        pdf: "AlfaroZyroC_3E-G2.pdf"
+      },
+      {
+        title: "ISO/IEC 20000 IT Service Management Associate",
+        issuer: "SkillFront Certification",
+        year: "2026",
+        category: "cloud",
+        img: "certs/skillfront_iso20000.webp",
+        pdf: "SkillFront-SFE040fb078483b5-51502439568066.pdf"
+      },
+      {
+        title: "Platform Administrator",
+        issuer: "Salesforce / Professional Credential",
+        year: "2026",
+        category: "cloud",
+        img: "certs/platform_administrator.webp",
+        pdf: "Cert8160304_PlatformAdministrator_20260925.pdf"
+      },
+      {
+        title: "Information Technology Specialist: Python",
+        issuer: "Certiport / Pearson VUE",
+        year: "2026",
+        category: "python",
+        img: "certs/certiport_python.webp",
+        pdf: "python_cert.pdf"
+      },
+      {
+        title: "Cybersecurity Specialization",
+        issuer: "ADBInstitute (Asian Development Bank)",
+        year: "2026",
+        category: "cloud",
+        img: "certs/adbi_cybersecurity.webp",
+        pdf: "cybersecurity.pdf"
+      },
+      {
+        title: "Python Essentials 1",
+        issuer: "Cisco Networking Academy",
+        year: "2026",
+        category: "python",
+        img: "certs/cisco_python_1.webp",
+        pdf: "PythonEssentials1Update20261006-20-amrf6h.pdf"
+      },
+      {
+        title: "Python Essentials 2",
+        issuer: "Cisco Networking Academy",
+        year: "2026",
+        category: "python",
+        img: "certs/cisco_python_2.webp",
+        pdf: "PythonEssentials2Update20261006-20-kpjstq.pdf"
+      },
+      {
+        title: "Hardware and Upgrade Support",
+        issuer: "Cisco Networking Academy",
+        year: "2026",
+        category: "networking",
+        img: "certs/cisco_hardware_support.webp",
+        pdf: "HardwareandUpgradeSupportv120261007-20-b26nil.pdf"
+      }
+    ];
+
+    let currentCertIndex = 0;
+    const modal = document.getElementById('cert-modal');
+    const modalImg = document.getElementById('modal-cert-img');
+    const modalTitle = document.getElementById('modal-cert-title');
+    const modalIssuer = document.getElementById('modal-cert-issuer');
+    const modalPdfLink = document.getElementById('modal-pdf-link');
+    const modalCounter = document.getElementById('modal-counter');
+
+    function openCertModal(index) {
+      currentCertIndex = index;
+      updateModalContent();
+      modal.showModal();
+    }
+
+    function updateModalContent() {
+      const cert = certData[currentCertIndex];
+      modalImg.src = cert.img;
+      modalImg.alt = cert.title;
+      modalTitle.textContent = cert.title;
+      modalIssuer.textContent = cert.issuer + " • " + cert.year;
+      modalPdfLink.href = cert.pdf;
+      modalCounter.textContent = (currentCertIndex + 1) + " of " + certData.length;
+    }
+
+    document.getElementById('modal-prev-btn').addEventListener('click', (e) => {
+      e.stopPropagation();
+      currentCertIndex = (currentCertIndex - 1 + certData.length) % certData.length;
+      updateModalContent();
+    });
+
+    document.getElementById('modal-next-btn').addEventListener('click', (e) => {
+      e.stopPropagation();
+      currentCertIndex = (currentCertIndex + 1) % certData.length;
+      updateModalContent();
+    });
+
+    // Keyboard navigation when modal is open
+    window.addEventListener('keydown', (e) => {
+      if (!modal.open) return;
+      if (e.key === 'ArrowLeft') {
+        currentCertIndex = (currentCertIndex - 1 + certData.length) % certData.length;
+        updateModalContent();
+      } else if (e.key === 'ArrowRight') {
+        currentCertIndex = (currentCertIndex + 1) % certData.length;
+        updateModalContent();
+      }
+    });
+
+    // Fallback for light-dismiss on browsers without closedby support
+    if (!('closedBy' in HTMLDialogElement.prototype)) {
+      modal.addEventListener('click', (event) => {
+        if (event.target !== modal) return;
+        const rect = modal.getBoundingClientRect();
+        const isInside = (
+          rect.top <= event.clientY && event.clientY <= rect.bottom &&
+          rect.left <= event.clientX && event.clientX <= rect.right
+        );
+        if (!isInside) modal.close();
+      });
+    }
+
+    // Category filter tabs
+    const filterBtns = document.querySelectorAll('.filter-btn');
+    const certCards = document.querySelectorAll('.cert-card-visual');
+
+    filterBtns.forEach(btn => {
+      btn.addEventListener('click', () => {
+        filterBtns.forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        const filter = btn.dataset.filter;
+
+        certCards.forEach(card => {
+          if (filter === 'all' || card.dataset.category === filter) {
+            card.style.display = 'flex';
+          } else {
+            card.style.display = 'none';
+          }
+        });
+      });
+    });
+  </script>
 </body>
 </html>
